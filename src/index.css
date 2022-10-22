@@ -1,6 +1,8 @@
 body {
-  min-height: 100%;
-  background-color: #ffd7d7;
-  /* background-image: url('../assets/background-image.png');
-  background-repeat: no-repeat; */
+  /* min-height: 100%; */
+  background-image: url('../assets/forest.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* background: url('../assets/forest.jpg') no-repeat center fixed; */
 }

@@ -45,12 +45,12 @@ function generateData(pokemon) {
                     data.speed,
                 ],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(255, 99, 132)',
+                    'rgba(54, 162, 235)',
+                    'rgba(255, 206, 86)',
+                    'rgba(75, 192, 192)',
+                    'rgba(153, 102, 255)',
+                    'rgba(255, 159, 64)',
                 ],
                 borderColor: [
                     'rgba(255, 99, 132, 1)',
@@ -180,15 +180,15 @@ export default function CharacterPage() {
                                 <Tab eventKey="info" title="Información">
                                     <Row className='mb-3'>
                                         <Col>
-                                            <Card.Subtitle className="mb-2 text-muted">Name</Card.Subtitle>
-                                            <br />
+                                            <Card.Subtitle className="mb-2 text-muted d-block">Name</Card.Subtitle>
+                                            {/* <br /> */}
                                             {pokemon.name}
                                         </Col>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Description</Card.Subtitle>
 
                                             
-                                            <br />
+                                            {/* <br /> */}
                                             {pokemon.description}
                                         </Col>
                                     </Row>
@@ -197,14 +197,14 @@ export default function CharacterPage() {
                                             <Card.Subtitle className="mb-2 text-muted">Altura</Card.Subtitle>
 
                                             
-                                            <br />
+                                            {/* <br /> */}
                                             {pokemon.height} m
                                         </Col>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Peso</Card.Subtitle>
 
                                             
-                                            <br />
+                                            {/* <br /> */}
                                             {pokemon.weight} kg
                                         </Col>
                                     </Row>
