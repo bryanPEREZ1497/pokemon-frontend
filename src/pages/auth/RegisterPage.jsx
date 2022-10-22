@@ -4,6 +4,9 @@ import { useForm } from "react-hook-form";
 import authService from '../../services/authService';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { messageService } from '../../services/messageService';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
 const loginSchema = yup.object({
     username: yup.string().required(),
@@ -13,6 +16,8 @@ const loginSchema = yup.object({
 
 export default function RegisterPage() {
 
+    const { signUp } = useContext(AuthContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
@@ -20,8 +25,13 @@ export default function RegisterPage() {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-        authService.login(data.username, data.password);
-        navigate('/list')
+        try {
+            await signUp(data.username, data.password);
+            navigate('/list');
+        } catch (error) {
+            console.log(error);
+            messageService.error(error.response.data.message);
+        }
     };
 
 
@@ -29,7 +39,7 @@ export default function RegisterPage() {
         <Container className="mt-5">
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
-                    <Card.Title>Login</Card.Title>
+                    <Card.Title>Register</Card.Title>
                     <Form onSubmit={handleSubmit(onSubmit)}>
 
                         <Form.Group className="mb-3" controlId="formUsername">

@@ -22,16 +22,17 @@ authService.login = async (username, password) => {
 
     try {
         const response = await instance.post('login', payload);
-        const token = response.data.token;
-        authService.setToken(token);
-        return true;
+        authService.setToken(response.data.token);
+        authService.setUser(response.data.data);
+        return response.data;
+        // console.log ('response.data.data.user', response.data.data);
     } catch (error) {
         authService.logout();
-        return false;
+        throw error;
     }
 }
 
-authService.register = async (username, password) => {
+authService.signUp = async (username, password) => {
     const payload = {
         username,
         password
@@ -39,28 +40,44 @@ authService.register = async (username, password) => {
 
     try {
         const response = await instance.post('register', payload);
-        const token = response.data.token;
-        authService.setToken(token);
+        authService.setToken(response.data.token);
+        authService.setUser(response.data.data);
         return response.data;
-    }
-    catch (error) {
-        // console.log('error de registro', error.response.data.message);
-        messageService.error(error.response.data.message);
+        // console.log ('response.data.data.user', response.data.data);
+    } catch (error) {
+        authService.logout();
+        throw error;
     }
 }
 
 
 authService.setToken = (token) => {
-    document.cookie = `token=${token}`
+    localStorage.setItem('token', token);
 }
 
 authService.getToken = () => {
-    const token = document.cookie.split('=')[1];
-    return token;
+    return localStorage.getItem('token');
+}
+
+authService.removeToken = () => {
+    localStorage.removeItem('token');
+}
+
+authService.setUser = (user) => {
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
+authService.getUser = () => {
+    return JSON.parse(localStorage.getItem('user'));
+}
+
+authService.removeUser = () => {
+    localStorage.removeItem('user');
 }
 
 authService.logout = () => {
-    document.cookie = 'token=';
+    authService.removeToken();
+    authService.removeUser();
 }
 
 authService.isAuthenticated = () => {

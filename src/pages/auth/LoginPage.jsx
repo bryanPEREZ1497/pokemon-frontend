@@ -5,6 +5,8 @@ import authService from '../../services/authService';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { messageService } from '../../services/messageService';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
 const loginSchema = yup.object({
     username: yup.string().required(),
@@ -14,6 +16,8 @@ const loginSchema = yup.object({
 
 export default function LoginPage() {
 
+    const { logIn } = useContext(AuthContext);
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: yupResolver(loginSchema)
     });
@@ -21,15 +25,13 @@ export default function LoginPage() {
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
-
-        const response = await authService.login(data.username, data.password);
-        // if (!response) {
-        //     messageService.error('Usuario o contraseña incorrectos');
-        //     return
-        // }
-        // messageService.success('Bienvenido');
-        navigate('/list')
-
+        try {
+            await logIn(data.username, data.password);
+            navigate('/list');
+        } catch (error) {
+            console.log(error);
+            messageService.error(error.response.data.message);
+        }
     };
 
 

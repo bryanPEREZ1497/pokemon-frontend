@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import { Navbar } from './components/Navbar';
+import TopNavbar from './components/TopNavbar';
+import AuthProvider from './contexts/AuthContext/AuthContext';
 import AppRouter from './router/AppRouter';
 export default function App() {
 
 
   return (
-    <div className='text-white'>
-      <Navbar />
+    <AuthProvider>
+      <TopNavbar />
       <AppRouter />
-    </div>
+    </AuthProvider>
   )
 }

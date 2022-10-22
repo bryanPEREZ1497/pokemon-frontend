@@ -17,35 +17,56 @@ import pokemonService from '../services/pokemonService';
 import { messageService } from '../services/messageService';
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const data = {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [
-        {
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)',
-            ],
-            borderWidth: 1,
-        },
-    ],
-};
+function generateData(pokemon) {
+    pokemon = { ...pokemon }
+    const stats = pokemon.stats;
+    console.log(stats);
+    const data = {
+        hp: stats.hp,
+        attack: stats.attack,
+        defense: stats.defense,
+        specialAttack: stats["special-attack"],
+        specialDefense: stats["special-defense"],
+        speed: stats.speed
 
+    }
 
-export default function characterPage() {
+    return {
+        labels: ['HP', 'Ataque', 'Defensa', 'Ataque Especial', 'Defensa Especial', 'Velocidad'],
+        datasets: [
+            {
+                label: 'Pokemon Stats',
+                data: [
+                    data.hp,
+                    data.attack,
+                    data.defense,
+                    data.specialAttack,
+                    data.specialDefense,
+                    data.speed,
+                ],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                ],
+                borderWidth: 1,
+            },
+        ],
+    }
+}
+
+export default function CharacterPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [pokemon, setPokemon] = useState({});
@@ -159,35 +180,41 @@ export default function characterPage() {
                                 <Tab eventKey="info" title="Información">
                                     <Row className='mb-3'>
                                         <Col>
-                                            Name
+                                            <Card.Subtitle className="mb-2 text-muted">Name</Card.Subtitle>
                                             <br />
                                             {pokemon.name}
                                         </Col>
                                         <Col>
-                                            Description
+                                            <Card.Subtitle className="mb-2 text-muted">Description</Card.Subtitle>
+
+                                            
                                             <br />
                                             {pokemon.description}
                                         </Col>
                                     </Row>
                                     <Row>
                                         <Col>
-                                            Altura
+                                            <Card.Subtitle className="mb-2 text-muted">Altura</Card.Subtitle>
+
+                                            
                                             <br />
                                             {pokemon.height} m
                                         </Col>
                                         <Col>
-                                            Peso
+                                            <Card.Subtitle className="mb-2 text-muted">Peso</Card.Subtitle>
+
+                                            
                                             <br />
                                             {pokemon.weight} kg
                                         </Col>
                                     </Row>
                                 </Tab>
                                 <Tab eventKey="stats" title="Estadísticas">
-                                    <Pie data={data} />
+                                    {
+                                        pokemon.stats && <Pie data={generateData(pokemon)} />
+                                    }
+
                                 </Tab>
-                                {/* <Tab eventKey="contact" title="Contact" disabled>
-                                    <Pie data={data} />
-                                </Tab> */}
                             </Tabs>
                         </Card.Body>
                     </Card>
