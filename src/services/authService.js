@@ -1,6 +1,4 @@
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { messageService } from './messageService';
 
 const api = 'https://pokeapi-expressjs.herokuapp.com/api/v1/auth';
 

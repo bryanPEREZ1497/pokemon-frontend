@@ -1,5 +1,4 @@
 import React, { useReducer, createContext } from "react";
-import axios from 'axios';
 
 import authService from "../../services/authService";
 import AuthReducer, { actionTypes } from "./AuthReducer";
