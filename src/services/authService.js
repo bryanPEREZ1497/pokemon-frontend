@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const api = 'https://pokeapi-expressjs.herokuapp.com/api/v1/auth';
+// const api = 'http://localhost:3000/api/v1/auth';
 
 const instance = axios.create({
     baseURL: api,
@@ -21,7 +22,7 @@ authService.login = async (username, password) => {
     try {
         const response = await instance.post('login', payload);
         authService.setToken(response.data.token);
-        authService.setUser(response.data.data);
+        authService.setUsername(response.data.data.username);
         return response.data;
     } catch (error) {
         authService.logout();
@@ -38,7 +39,7 @@ authService.signUp = async (username, password) => {
     try {
         const response = await instance.post('register', payload);
         authService.setToken(response.data.token);
-        authService.setUser(response.data.data);
+        authService.setUsername(response.data.data.username);
         return response.data;
     } catch (error) {
         authService.logout();
@@ -59,21 +60,21 @@ authService.removeToken = () => {
     localStorage.removeItem('token');
 }
 
-authService.setUser = (user) => {
-    localStorage.setItem('user', JSON.stringify(user));
+authService.setUsername = (username) => {
+    localStorage.setItem('username', JSON.stringify(username));
 }
 
-authService.getUser = () => {
-    return JSON.parse(localStorage.getItem('user'));
+authService.getUsername = () => {
+    return (localStorage.getItem('username'));
 }
 
-authService.removeUser = () => {
-    localStorage.removeItem('user');
+authService.removeUsername = () => {
+    localStorage.removeItem('username');
 }
 
 authService.logout = () => {
     authService.removeToken();
-    authService.removeUser();
+    authService.removeUsername();
 }
 
 authService.isAuthenticated = () => {
