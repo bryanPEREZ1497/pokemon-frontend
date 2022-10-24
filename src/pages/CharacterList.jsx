@@ -35,15 +35,6 @@ export default function CharacterList() {
 
   async function loadPokemons(search = '') {
     const response = await pokemonService.getPokemons(search);
-    // const response = await axios.get('http://localhost:3000/api/v1/pokemons', {
-    //   params: {
-    //     search
-    //   },
-    //   headers: {
-    //     'Authorization': `Bearer ${authService.getToken()}`
-    //   }
-    // });
-    // const data = response.data.data;
     setLoading(false);
     setPokemons(response.data);
   }
