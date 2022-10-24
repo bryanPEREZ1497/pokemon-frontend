@@ -31,7 +31,6 @@ export default function RegisterPage() {
             await signUp(data.username, data.password);
             navigate('/list');
         } catch (error) {
-            console.log(error);
             messageService.error(error.response.data.message);
         }
     };

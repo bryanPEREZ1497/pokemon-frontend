@@ -156,7 +156,7 @@ export default function CharacterPage() {
                                             {pokemon.description}
                                         </Col>
                                     </Row>
-                                    <Row>
+                                    <Row className='mb-3'>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Altura</Card.Subtitle>
 

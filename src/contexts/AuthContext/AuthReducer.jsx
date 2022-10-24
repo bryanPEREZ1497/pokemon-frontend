@@ -13,20 +13,22 @@ export default function AuthReducer(state, action) {
             return {
                 ...state,
                 isLoggedIn: true,
-                user: action.payload.user,
+                username: action.payload.username,
                 token: action.payload.token
             };
         }
         case actionTypes.logOut: {
             return {
                 isLoggedIn: false,
+                username: null,
+                token: null,
             };
         }
         case actionTypes.signUp: {
             return {
                 ...state,
                 isLoggedIn: true,
-                user: action.payload.user,
+                username: action.payload.username,
                 token: action.payload.token
             };
         }
@@ -35,5 +37,4 @@ export default function AuthReducer(state, action) {
             return state;
         }
     }
-    return state;
 };

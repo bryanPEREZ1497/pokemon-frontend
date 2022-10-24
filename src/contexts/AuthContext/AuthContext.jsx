@@ -6,11 +6,13 @@ import AuthReducer, { actionTypes } from "./AuthReducer";
 export const AuthContext = createContext({});
 
 const init = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const token = authService.getToken();
+    const username = authService.getUsername();
 
     return {
-        isLoggedIn: user ? true : false,
-        user,
+        isLoggedIn: !!token,
+        token,
+        username,
     }
 }
 
@@ -21,8 +23,8 @@ export default function AuthProvider({ children }) {
     const logIn = async (username, password) => {
         try {
             const response = await authService.login(username, password)
-            const user = { username, token: response.token }
-            const action = { type: actionTypes.logIn, payload: user }
+            const payload = { username, token: response.token }
+            const action = { type: actionTypes.logIn, payload }
 
             dispatch(action);
         } catch (error) {
@@ -40,8 +42,8 @@ export default function AuthProvider({ children }) {
     const signUp = async (username, password) => {
         try {
             const response = await authService.signUp(username, password)
-            const user = { username, token: response.token }
-            const action = { type: actionTypes.logIn, payload: user }
+            const payload = { username, token: response.token }
+            const action = { type: actionTypes.logIn, payload }
 
             dispatch(action);
         } catch (error) {

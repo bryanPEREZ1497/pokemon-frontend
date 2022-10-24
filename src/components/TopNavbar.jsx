@@ -2,12 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import authService from '../services/authService';
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
 
 export default function TopNavbar() {
-    const { logOut, isLoggedIn } = useContext(AuthContext);
+    const { logOut, isLoggedIn, username } = useContext(AuthContext);
     return (
         <Navbar expand="lg">
             <Container>
@@ -31,6 +30,9 @@ export default function TopNavbar() {
                                     >
                                         Log out
                                     </NavLink>
+                                    <span className="nav-item nav-link">
+                                        {username}
+                                    </span>
                                 </>
                                 :
                                 <>

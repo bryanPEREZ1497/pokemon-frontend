@@ -30,7 +30,6 @@ export default function LoginPage() {
             await logIn(data.username, data.password);
             navigate('/list');
         } catch (error) {
-            console.log(error);
             messageService.error(error.response.data.message);
         }
     };
