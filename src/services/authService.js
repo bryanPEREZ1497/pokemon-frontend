@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { messageService } from './messageService';
 
-const api = 'http://localhost:3000/api/v1/auth';
+const api = 'https://pokeapi-expressjs.herokuapp.com/api/v1/auth';
 
 const instance = axios.create({
     baseURL: api,
