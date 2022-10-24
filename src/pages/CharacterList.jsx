@@ -1,5 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
+
 
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
@@ -8,6 +10,7 @@ import Col from 'react-bootstrap/Col';
 
 import Character from '../components/Character';
 import pokemonService from '../services/pokemonService';
+import authService from '../services/authService';
 
 export default function CharacterList() {
   const [pokemons, setPokemons] = useState([]);
@@ -28,14 +31,19 @@ export default function CharacterList() {
 
   function submitHandler(e) {
     e.preventDefault();
-    // handleClick();
   }
-
-  const showSearch = search.length === 0;
-  // const showError = (q.length > 0) && characters.length === 0;
 
   async function loadPokemons(search = '') {
     const response = await pokemonService.getPokemons(search);
+    // const response = await axios.get('http://localhost:3000/api/v1/pokemons', {
+    //   params: {
+    //     search
+    //   },
+    //   headers: {
+    //     'Authorization': `Bearer ${authService.getToken()}`
+    //   }
+    // });
+    // const data = response.data.data;
     setLoading(false);
     setPokemons(response.data);
   }

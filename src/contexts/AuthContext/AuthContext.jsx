@@ -1,13 +1,14 @@
 import React, { useReducer, createContext } from "react";
-import authService from "../../services/authService";
+import axios from 'axios';
 
+import authService from "../../services/authService";
 import AuthReducer, { actionTypes } from "./AuthReducer";
 
 export const AuthContext = createContext({});
 
 const init = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    
+
     return {
         isLoggedIn: user ? true : false,
         user,

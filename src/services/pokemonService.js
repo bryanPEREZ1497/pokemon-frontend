@@ -8,7 +8,6 @@ const instance = axios.create({
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': `Bearer ${authService.getToken()}`
     },
 });
 
@@ -20,13 +19,19 @@ pokemonService.getPokemons = async (search = '') => {
         params: {
             search
         },
-
+        headers: {
+            'Authorization': `Bearer ${authService.getToken()}`
+        }
     });
     return response.data;
 }
 
 pokemonService.getPokemon = async (id) => {
-    const response = await instance.get(`${api}/${id}`);
+    const response = await instance.get(`${api}/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${authService.getToken()}`
+        }
+    });
     return response.data;
 }
 
