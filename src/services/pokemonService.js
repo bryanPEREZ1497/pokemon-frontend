@@ -3,15 +3,6 @@ import authService from './authService';
 
 const api = 'http://localhost:3000/api/v1/pokemons';
 
-// const token = authService.getToken()
-//     .then(token => {
-//         return token;
-//     })
-//     .catch(error => {
-//         console.log('error', error);
-//     })
-
-
 const instance = axios.create({
     baseURL: api,
     headers: {

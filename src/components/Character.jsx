@@ -1,7 +1,6 @@
 
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom';
-// import '../App.css'
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 

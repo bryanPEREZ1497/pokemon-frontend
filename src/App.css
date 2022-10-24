@@ -36,26 +36,6 @@
   border-radius: 15%;
 }
 
-.title {
-  cursor: pointer;
-  position: relative;
-}
-
-.title:hover:before {
-  content: 'Click name to copy';
-  position: absolute;
-  color: rgb(148 148 213);
-  background-color: white;
-  padding: 2px;
-  font-size: 12px;
-  border-radius: 5px;
-  border: 1px solid white;
-  top: -20px;
-  right: 0px;
-
-}
-
 .hover:hover {
   box-shadow: 0 0 0 2px #646cff;
-
 }

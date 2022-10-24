@@ -7,7 +7,7 @@ export const AuthContext = createContext({});
 
 const init = () => {
     const user = JSON.parse(localStorage.getItem('user'));
-
+    
     return {
         isLoggedIn: user ? true : false,
         user,

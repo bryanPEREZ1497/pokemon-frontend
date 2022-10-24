@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
-
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -8,19 +7,17 @@ import Col from 'react-bootstrap/Col';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import { Button } from 'react-bootstrap';
-import Modal from 'react-bootstrap/Modal';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-
 import '../App.css'
 import pokemonService from '../services/pokemonService';
 import { messageService } from '../services/messageService';
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 function generateData(pokemon) {
     pokemon = { ...pokemon }
     const stats = pokemon.stats;
-    console.log(stats);
     const data = {
         hp: stats.hp,
         attack: stats.attack,
@@ -128,31 +125,12 @@ export default function CharacterPage() {
                         <Card.Body>
                             <Card.Title style={{ color: 'black' }}>{pokemon.name}</Card.Title>
                         </Card.Body>
-                        <Button
-                            variant="outline-primary"
-                            onClick={openModal} >
-                            View
-                        </Button>
                     </Card>
                     <Button
                         variant="outline-primary"
                         onClick={onNavigateBack} >
                         Back
                     </Button>
-                    <Modal show={show} onHide={closeModal}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Modal heading</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={closeModal}>
-                                Close
-                            </Button>
-                            <Button variant="primary" onClick={closeModal}>
-                                Save Changes
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
                 </Col>
                 <Col
                     xs={12}

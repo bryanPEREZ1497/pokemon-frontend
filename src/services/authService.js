@@ -25,7 +25,6 @@ authService.login = async (username, password) => {
         authService.setToken(response.data.token);
         authService.setUser(response.data.data);
         return response.data;
-        // console.log ('response.data.data.user', response.data.data);
     } catch (error) {
         authService.logout();
         throw error;
