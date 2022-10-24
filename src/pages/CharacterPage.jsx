@@ -159,14 +159,12 @@ export default function CharacterPage() {
                                     <Row className='mb-3'>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted d-block">Name</Card.Subtitle>
-                                            {/* <br /> */}
                                             {pokemon.name}
                                         </Col>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Description</Card.Subtitle>
 
                                             
-                                            {/* <br /> */}
                                             {pokemon.description}
                                         </Col>
                                     </Row>
@@ -175,15 +173,27 @@ export default function CharacterPage() {
                                             <Card.Subtitle className="mb-2 text-muted">Altura</Card.Subtitle>
 
                                             
-                                            {/* <br /> */}
                                             {pokemon.height} m
                                         </Col>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Peso</Card.Subtitle>
 
                                             
-                                            {/* <br /> */}
                                             {pokemon.weight} kg
+                                        </Col>
+                                    </Row>
+                                    <Row>
+                                        <Col>
+                                            <Card.Subtitle className="mb-2 text-muted">Evoluciona a</Card.Subtitle>
+
+                                            
+                                            {pokemon.evolution}
+                                        </Col>
+                                        <Col>
+                                            <Card.Subtitle className="mb-2 text-muted">Tipo</Card.Subtitle>
+
+                                            
+                                            {pokemon.type} kg
                                         </Col>
                                     </Row>
                                 </Tab>
