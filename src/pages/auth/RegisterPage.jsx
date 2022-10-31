@@ -7,7 +7,7 @@ import * as yup from "yup";
 import { messageService } from '../../services/messageService';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
-import pikachu from '../../assets/pikachu.png'
+import agua from '../../assets/agua.png'
 import Image from 'react-bootstrap/Image'
 
 const loginSchema = yup.object({
@@ -37,7 +37,10 @@ export default function RegisterPage() {
 
 
     return (
-        <Container className="mt-5">
+        <Container className=""
+        style={{
+            padding: '12rem',
+        }}>
             <Row>
                 <Col
                     xs={12}
@@ -96,7 +99,10 @@ export default function RegisterPage() {
                     lg={8}
                     xl={8}
                 >
-                    <Image src={pikachu} fluid />
+                    <Image src={agua} fluid
+                        style={{
+                            maxWidth: '22rem', height: 'auto'
+                        }} />
                 </Col>
             </Row>
 

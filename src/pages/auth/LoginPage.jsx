@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
-import pikachu from '../../assets/pikachu.png'
+import pikachu from '../../assets/fuego.png'
 import { messageService } from '../../services/messageService';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
@@ -36,7 +36,10 @@ export default function LoginPage() {
 
 
     return (
-        <Container className="mt-5">
+        <Container className=""
+        style={{
+            padding: '12rem',
+        }}>
             <Row>
                 <Col
                     xs={12}
@@ -95,7 +98,10 @@ export default function LoginPage() {
                     lg={8}
                     xl={8}
                 >
-                    <Image src={pikachu} fluid />
+                    <Image src={pikachu} fluid 
+                    style={{
+                        maxWidth: '22rem', height: 'auto'
+                    }} />
                 </Col>
             </Row>
 

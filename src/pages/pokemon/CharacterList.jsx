@@ -7,8 +7,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import Character from '../components/Character';
-import pokemonService from '../services/pokemonService';
+import Character from '../../components/Character';
+import pokemonService from '../../services/pokemonService';
 
 export default function CharacterList() {
   const [pokemons, setPokemons] = useState([]);
@@ -38,13 +38,21 @@ export default function CharacterList() {
   }
 
   return (
-    <Container>
+    <Container
+      style={{
+        paddingTop: '1rem',
+        paddingBottom: '1rem',
+      }}>
       {
         loading
           ? <h1>Loading ...</h1>
           :
           <>
-            <Row>
+            <Row
+              style={{
+                // backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                // marginTop: '10px',
+              }}>
               <Col
                 xs={12}
                 sm={12}
@@ -75,7 +83,10 @@ export default function CharacterList() {
                 </form>
               </Col>
             </Row>
-            <Row>
+            <Row
+              style={{
+                // backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              }}>
               {pokemons.map(character => {
                 return (
                   <Col

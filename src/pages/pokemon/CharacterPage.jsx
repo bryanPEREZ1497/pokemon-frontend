@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Navigate, useNavigate, useParams } from 'react-router-dom';
+
 import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -9,9 +10,10 @@ import Tabs from 'react-bootstrap/Tabs';
 import { Badge, Button } from 'react-bootstrap';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
-import '../App.css'
-import pokemonService from '../services/pokemonService';
-import { messageService } from '../services/messageService';
+
+import '../../App.css'
+import pokemonService from '../../services/pokemonService';
+import { messageService } from '../../services/messageService';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -90,7 +92,10 @@ export default function CharacterPage() {
     }
 
     return (
-        <Container>
+        <Container
+            style={{
+                padding: '6rem',
+            }}>
             <Row>
                 <Col
                     xs={12}
@@ -177,7 +182,7 @@ export default function CharacterPage() {
                                         </Col>
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Tipo</Card.Subtitle>
-                                            
+
                                             {pokemon.type?.map(el => {
                                                 return (
                                                     <Badge
