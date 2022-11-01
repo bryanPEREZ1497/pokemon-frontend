@@ -92,7 +92,7 @@ export default function CharacterList() {
                     sm={6}
                     md={4}
                     lg={3}
-                    xl={2}
+                    xl={3}
                     style={{ marginTop: '1.2rem' }}
                     key={character._id}>
                     <Character character={character} />
