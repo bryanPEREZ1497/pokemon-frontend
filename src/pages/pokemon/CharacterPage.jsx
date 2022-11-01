@@ -186,13 +186,13 @@ export default function CharacterPage() {
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Tipo</Card.Subtitle>
 
-                                            {pokemon.type?.map(el => {
+                                            {pokemon.type?.map((el,index) => {
                                                 return (
                                                     <Badge
                                                         bg="primary"
                                                         text="white"
                                                         className="me-2"
-                                                        key={el._id}
+                                                        key={index}
                                                     >
                                                         {el}
                                                     </Badge>
