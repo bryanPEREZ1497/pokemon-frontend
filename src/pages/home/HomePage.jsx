@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import pikachu from '../../assets/pikachu.png'
 import { Col, Container, Row } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
+import Footer from '../../components/Footer';
 
 
 export default function HomePage() {
@@ -26,7 +27,9 @@ export default function HomePage() {
           flexDirection: 'row',
           alignItems: 'center',
           justifyContent: 'center',
-          padding: '12rem',
+          paddingTop: '12rem',
+          paddingBottom: '12rem',
+          // paddingLeft: '2rem',
         }}>
         <Col
           style={{
@@ -104,27 +107,7 @@ export default function HomePage() {
         </Col>
 
       </Row>
-      <Row
-        style={{
-          backgroundColor: '#333333',
-          width: '100%',
-          padding: '2.2rem',
-          color: 'white',
-          // marginTop: '17rem',
-
-
-        }}>
-        <Col style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-
-        }}>
-          <p>Elaborado por <a href='https://www.linkedin.com/in/bryan-p%C3%A9rez-4190aa118/' target={"_blank"}>Bryan Perez</a></p>
-
-        </Col>
-      </Row>
+      <Footer />
     </div>
   )
 }
