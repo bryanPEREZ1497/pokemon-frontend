@@ -10,15 +10,26 @@ export default function TopNavbar() {
     return (
         <Navbar expand="lg">
             <Container>
-                <Navbar.Brand>Pokedex</Navbar.Brand>
+                <Navbar.Brand>PokeApp</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+                    <Nav className="">
+                        <NavLink
+                            className="nav-item nav-link"
+                            to="/home"
+                        >
+                            Home
+                        </NavLink>
                         {
                             isLoggedIn ?
-                                <>
+                                <Nav className="">
                                     <NavLink
                                         className="nav-item nav-link"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'start',
+                                        }}
                                         to="/list"
                                     >
                                         Pokemons
@@ -30,12 +41,12 @@ export default function TopNavbar() {
                                     >
                                         Log out
                                     </NavLink>
-                                    <span className="nav-item nav-link">
-                                        {username}
-                                    </span>
-                                </>
+                                    <Navbar.Text>
+                                        Usuario {username}
+                                    </Navbar.Text>
+                                </Nav>
                                 :
-                                <>
+                                <Nav className="">
                                     <NavLink
                                         className="nav-item nav-link"
                                         to="/login"
@@ -48,12 +59,11 @@ export default function TopNavbar() {
                                     >
                                         Register
                                     </NavLink>
-
-                                </>
+                                </Nav>
                         }
                     </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar >
-    )
+    );
 }

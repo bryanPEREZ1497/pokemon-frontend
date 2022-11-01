@@ -50,8 +50,6 @@ export default function CharacterList() {
           <>
             <Row
               style={{
-                // backgroundColor: 'rgba(255, 255, 255, 0.5)',
-                // marginTop: '10px',
               }}>
               <Col
                 xs={12}

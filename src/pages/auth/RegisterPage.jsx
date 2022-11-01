@@ -38,9 +38,12 @@ export default function RegisterPage() {
 
     return (
         <Container className=""
-        style={{
-            padding: '12rem',
-        }}>
+            style={{
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
             <Row>
                 <Col
                     xs={12}
@@ -48,8 +51,16 @@ export default function RegisterPage() {
                     md={4}
                     lg={4}
                     xl={4}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '2rem'
+                    }}
                 >
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{
+                        minWidth: '18rem'
+                    }}>
                         <Card.Body>
                             <Card.Title>Register</Card.Title>
                             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -98,10 +109,15 @@ export default function RegisterPage() {
                     md={8}
                     lg={8}
                     xl={8}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
                 >
                     <Image src={agua} fluid
                         style={{
-                            maxWidth: '22rem', height: 'auto'
+                            maxWidth: '12rem', height: 'auto'
                         }} />
                 </Col>
             </Row>

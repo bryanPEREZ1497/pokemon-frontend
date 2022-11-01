@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import Image from 'react-bootstrap/Image'
-import pikachu from '../../assets/fuego.png'
+import fuego from '../../assets/fuego.png'
 import { messageService } from '../../services/messageService';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
@@ -37,9 +37,12 @@ export default function LoginPage() {
 
     return (
         <Container className=""
-        style={{
-            padding: '12rem',
-        }}>
+            style={{
+                height: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
             <Row>
                 <Col
                     xs={12}
@@ -47,8 +50,17 @@ export default function LoginPage() {
                     md={4}
                     lg={4}
                     xl={4}
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        marginBottom: '2rem'
+                    }}
                 >
-                    <Card style={{ width: '18rem' }}>
+                    <Card style={{
+                        // width: '18rem'
+                        minWidth: '18rem',
+                    }}>
                         <Card.Body>
                             <Card.Title>Login</Card.Title>
                             <Form onSubmit={handleSubmit(onSubmit)}>
@@ -97,11 +109,18 @@ export default function LoginPage() {
                     md={8}
                     lg={8}
                     xl={8}
-                >
-                    <Image src={pikachu} fluid 
                     style={{
-                        maxWidth: '22rem', height: 'auto'
-                    }} />
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <Image src={fuego}
+                        fluid
+                        style={{
+                            maxWidth: '12rem', height: 'auto'
+                        }}
+                    />
                 </Col>
             </Row>
 

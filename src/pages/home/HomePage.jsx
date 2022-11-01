@@ -4,34 +4,33 @@ import { Link } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import pikachu from '../../assets/pikachu.png'
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/AuthContext/AuthContext';
 
 
 export default function HomePage() {
-  const {isLoggedIn} = useContext(AuthContext);
+  const { isLoggedIn } = useContext(AuthContext);
 
   return (
     <div
       style={{
-        margin: 0,
-        padding: 0,
-        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        flexWrap: 'nowrap',
+        alignItems: 'center',
+        justifyContent: 'center',
       }}>
       <Row
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.5)',
-          width: '100%',
-          height: '100vh',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'center',
           padding: '12rem',
         }}>
-        <Col className='col mt-5'
+        <Col
           style={{
-            width: '100%',
-            height: '100%',
-            flex: 1,
-            flexDirection: 'column',
-            alignItems: 'center',
+            marginBottom: '2rem',
           }}>
           <h3 className='text-muted'
             style={{
@@ -60,9 +59,9 @@ export default function HomePage() {
           <Link to={`/list`}>
             <Button variant="primary" >
               {
-                isLoggedIn 
-                ? 'Go to list'
-                : 'Login'
+                isLoggedIn
+                  ? 'Go to list'
+                  : 'Login'
               }
             </Button>
           </Link>
@@ -72,7 +71,7 @@ export default function HomePage() {
           }}>
           <Card className=''
             style={{
-              flex: 1,
+              display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
@@ -108,11 +107,11 @@ export default function HomePage() {
       <Row
         style={{
           backgroundColor: '#333333',
-          position: 'absolute',
           width: '100%',
           padding: '2.2rem',
-          margin: 'auto 0',
           color: 'white',
+          // marginTop: '17rem',
+
 
         }}>
         <Col style={{
@@ -120,7 +119,6 @@ export default function HomePage() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          padding: '0',
 
         }}>
           <p>Elaborado por <a href='https://www.linkedin.com/in/bryan-p%C3%A9rez-4190aa118/' target={"_blank"}>Bryan Perez</a></p>
