@@ -13,6 +13,7 @@ import { Pie } from 'react-chartjs-2';
 
 import '../../App.css'
 import usePokemonService from '../../hooks/usePokemonService';
+import FavoriteButton from '../../components/FavoriteButton';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -119,6 +120,7 @@ export default function CharacterPage() {
                         />
                         <Card.Body>
                             <Card.Title style={{ color: 'black' }}>{pokemon.name}</Card.Title>
+                            <FavoriteButton favorite={pokemon} />
                         </Card.Body>
                     </Card>
                     <Button
