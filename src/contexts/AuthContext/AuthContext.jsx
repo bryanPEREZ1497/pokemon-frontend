@@ -1,6 +1,7 @@
-import React, { useReducer, createContext } from "react";
+import React, { useReducer, createContext, useContext } from "react";
 
 import authService from "../../services/authService";
+import { FavoritesContext } from "../FavoriteContext/FavoritesContext";
 import AuthReducer, { actionTypes } from "./AuthReducer";
 
 export const AuthContext = createContext({});
@@ -19,6 +20,7 @@ const init = () => {
 
 export default function AuthProvider({ children }) {
     const [authState, dispatch] = useReducer(AuthReducer, {}, init);
+    // const {cleanState} = useContext(FavoritesContext);
 
     const logIn = async (username, password) => {
         try {
@@ -36,6 +38,7 @@ export default function AuthProvider({ children }) {
     const logOut = () => {
         authService.logout();
         const action = { type: actionTypes.logOut };
+        // cleanState();
         dispatch(action);
     }
 

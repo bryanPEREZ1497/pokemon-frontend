@@ -8,12 +8,13 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import Character from '../../components/Character';
-import pokemonService from '../../services/pokemonService';
+import usePokemonService from '../../hooks/usePokemonService';
 
 export default function CharacterList() {
   const [pokemons, setPokemons] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('')
+  const { getPokemons } = usePokemonService();
 
   useEffect(
     () => {
@@ -32,7 +33,7 @@ export default function CharacterList() {
   }
 
   async function loadPokemons(search = '') {
-    const response = await pokemonService.getPokemons(search);
+    const response = await getPokemons(search);
     setLoading(false);
     setPokemons(response.data);
   }

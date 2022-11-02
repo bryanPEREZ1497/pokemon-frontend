@@ -6,7 +6,7 @@ import { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthContext/AuthContext';
 
 export default function TopNavbar() {
-    const { logOut, isLoggedIn, username } = useContext(AuthContext);
+    const { logOut, isLoggedIn, username, cleanState } = useContext(AuthContext);
     return (
         <Navbar expand="lg">
             <Container>
@@ -36,8 +36,19 @@ export default function TopNavbar() {
                                     </NavLink>
                                     <NavLink
                                         className="nav-item nav-link"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'start',
+                                        }}
+                                        to="/favorites"
+                                    >
+                                        Favorites
+                                    </NavLink>
+                                    <NavLink
+                                        className="nav-item nav-link"
                                         to="/login"
-                                        onClick={logOut}
+                                        onClick={()=>{logOut();}}
                                     >
                                         Log out
                                     </NavLink>

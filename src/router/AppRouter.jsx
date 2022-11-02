@@ -1,3 +1,4 @@
+
 import React from 'react'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 
@@ -7,6 +8,7 @@ import CharacterList from '../pages/pokemon/CharacterList';
 import CharacterPage from '../pages/pokemon/CharacterPage';
 import HomePage from '../pages/home/HomePage';
 import PrivateRoutes from './PrivateRoutes';
+import FavoritePage from '../pages/pokemon/FavoritePage';
 
 export default function AppRouter() {
     return (
@@ -28,6 +30,7 @@ export default function AppRouter() {
                 <Route element={<PrivateRoutes />}>
                     <Route path="list" element={<CharacterList />} />
                     <Route path="character/:id" element={<CharacterPage />} />
+                    <Route path="favorites" element={<FavoritePage />} />
                 </Route>
                 <Route path="/" element={<Navigate to="/home" />} />
             </Routes>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const api = 'https://pokeapi-expressjs.herokuapp.com/api/v1/auth';
-// const api = 'http://localhost:3000/api/v1/auth';
+// const api = 'https://pokeapi-expressjs.herokuapp.com/api/v1/auth';
+const api = 'http://localhost:3000/api/v1/auth';
 
 const instance = axios.create({
     baseURL: api,

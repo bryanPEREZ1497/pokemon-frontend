@@ -12,8 +12,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 
 import '../../App.css'
-import pokemonService from '../../services/pokemonService';
-import { messageService } from '../../services/messageService';
+import usePokemonService from '../../hooks/usePokemonService';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -69,18 +68,15 @@ export default function CharacterPage() {
     const { id } = useParams();
     const navigate = useNavigate();
     const [pokemon, setPokemon] = useState({});
+    const { getPokemon } = usePokemonService();
 
     useEffect(() => {
         loadCharacter();
     }, [])
 
     async function loadCharacter() {
-        try {
-            const response = await pokemonService.getPokemon(id)
-            setPokemon(response.data);
-        } catch (error) {
-            messageService.error('Error loading character');
-        }
+        const response = await getPokemon(id);
+        setPokemon(response.data);
     }
 
     const onNavigateBack = () => {
@@ -186,7 +182,7 @@ export default function CharacterPage() {
                                         <Col>
                                             <Card.Subtitle className="mb-2 text-muted">Tipo</Card.Subtitle>
 
-                                            {pokemon.type?.map((el,index) => {
+                                            {pokemon.type?.map((el, index) => {
                                                 return (
                                                     <Badge
                                                         bg="primary"
