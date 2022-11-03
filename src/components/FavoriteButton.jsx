@@ -8,7 +8,7 @@ const iconColors = {
     isNotFavorite: 'action',
 }
 
-export default function FavoriteButton({ favorite }) {
+export default function FavoriteButton({ favorite, style }) {
     const { favoritesState,
         addFavorite,
         removeFavorite,
@@ -42,6 +42,7 @@ export default function FavoriteButton({ favorite }) {
     return (
         <FavoriteIcon
             color={iconColor}
-            onClick={handleClick} />
+            onClick={handleClick}
+            style={style} />
     )
 }

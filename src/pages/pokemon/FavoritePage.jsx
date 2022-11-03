@@ -11,10 +11,13 @@ import { FavoritesContext } from '../../contexts/FavoriteContext/FavoritesContex
 import { Container } from 'react-bootstrap';
 import FavoriteButton from '../../components/FavoriteButton';
 import Avatar from '@mui/material/Avatar';
-import { Chip } from '@mui/material';
+import { Button, Chip, Icon } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import InfoIcon from '@mui/icons-material/Info';
 
 export default function FavoritePage() {
-    const { favoritesState, addFavorite, removeFavorite, isFavorite, loadFavorites } = React.useContext(FavoritesContext)
+    const { favoritesState, } = React.useContext(FavoritesContext)
+    const navigate = useNavigate()
 
     return (
         <Container>
@@ -33,13 +36,16 @@ export default function FavoritePage() {
                             <TableCell align="right">Weight</TableCell>
                             <TableCell align="right">Evolution</TableCell>
                             <TableCell align="right"></TableCell>
+                            <TableCell align="right"></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {favoritesState.map((row) => (
                             <TableRow
-                                key={row.name}
                                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                className="pokemon-row"
+                                key={row.name}
+                                
                             >
                                 <TableCell component="th" scope="row">
                                     <Avatar alt={row.name} src={row.image} />
@@ -56,9 +62,13 @@ export default function FavoritePage() {
                                 <TableCell align="right">{row.weight}</TableCell>
                                 <TableCell align="right">{row.evolution}</TableCell>
                                 <TableCell align="right">
-                                    <FavoriteButton favorite={row} />
+                                    <FavoriteButton favorite={row} style={{ zIndex: 2 }} />
+                                </TableCell>
+                                <TableCell align="left">
+                                    <InfoIcon color='success' onClick={() => { navigate(`/character/${row._id}`) }} />
                                 </TableCell>
                             </TableRow>
+
                         ))}
                     </TableBody>
                 </Table>
