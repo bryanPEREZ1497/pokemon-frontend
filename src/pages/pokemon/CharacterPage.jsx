@@ -120,7 +120,7 @@ export default function CharacterPage() {
                         />
                         <Card.Body>
                             <Card.Title style={{ color: 'black' }}>{pokemon.name}</Card.Title>
-                            <FavoriteButton favorite={pokemon} />
+                            {/* <FavoriteButton favorite={pokemon} /> */}
                         </Card.Body>
                     </Card>
                     <Button
