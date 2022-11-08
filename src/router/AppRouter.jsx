@@ -15,10 +15,10 @@ export default function AppRouter() {
     return (
         <div 
         style={{
-            margin:0,
-            padding:0,
-            width:'100%',
-            backgroundColor: 'rgba(255, 255, 255, 0.5)',
+            // margin:0,
+            // padding:0,
+            // width:'100%',
+            // backgroundColor: 'rgba(255, 255, 255, 0.5)',
             
         }}>
             <Routes>

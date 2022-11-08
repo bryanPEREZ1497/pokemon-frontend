@@ -1,7 +1,4 @@
 import React from 'react'
-import { AuthContext } from '../contexts/AuthContext/AuthContext';
-import { messageService } from '../services/messageService';
-// import { instance } from '../api/axiosInstance';
 import useAxiosInstance from './useAxiosInstance';
 
 export default function useUserService() {
